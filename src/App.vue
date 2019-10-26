@@ -18,6 +18,7 @@
 <script>
 import ToDoItem from './components/ToDoItem.vue'
 import { ToastProgrammatic as Toast } from 'buefy'
+import axios from "axios"
 
 export default {
     name: 'app',
@@ -25,8 +26,13 @@ export default {
         return { 
             newtodo: "",
             todoid: 0,
-            todos: [ ]
+            todos: []
         }
+    },
+    mounted() {
+        axios({method: "GET", "url": "https://localhost:5001/todos" })
+            .then(result => { this.todos = result.data }, 
+                  error => { Toast.open({message: error, type: 'is-danger', position: 'is-bottom'}) })
     },
     components: {
         ToDoItem
@@ -43,7 +49,7 @@ export default {
 
         deleteTodo(todo) {
             this.todos = this.todos.filter(item => item !== todo)
-            Toast.open({message: 'Todo deleted !', type: 'is-danger', position: 'is-bottom'})
+            Toast.open({message: 'Todo deleted !', type: 'is-warning', position: 'is-bottom'})
         }
     }
 }
