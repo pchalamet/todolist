@@ -7,7 +7,7 @@ using System.Linq;
 namespace Services.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class TodosController : ControllerBase
     {
         private readonly ILogger<TodosController> _logger;

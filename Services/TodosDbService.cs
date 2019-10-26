@@ -20,6 +20,27 @@ namespace Services
         void Remove(Todo todo);
     }
 
+    public class StubDbService : ITodosDbService
+    {
+        public StubDbService(string cnString)
+        {
+            
+        }
+
+        public void Add(Todo todo)
+        {
+        }
+
+        public IEnumerable<Todo> Load()
+        {
+            return new Todo[] { new Todo { Id = Guid.NewGuid(), Text = "Toto" } };
+        }
+
+        public void Remove(Todo todo)
+        {
+        }
+    }
+
     public class TodosDbService : ITodosDbService
     {
         private readonly string cnString;
