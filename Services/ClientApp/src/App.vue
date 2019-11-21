@@ -30,7 +30,7 @@ export default {
         }
     },
     mounted() {
-        axios({method: "GET", url: "http://localhost:5000/api/todos" })
+        axios({method: "GET", url: "/api/todos" })
             .then(result => { this.todos = result.data }, 
                   error => { Toast.open({message: error, type: 'is-danger', position: 'is-bottom'}) })
     },
